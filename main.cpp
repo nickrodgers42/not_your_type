@@ -6,25 +6,9 @@
 #include <fstream>
 #include <vector> 
 #include <stdio.h>
+#include "tarotCard.h"
 
 using namespace std;
-
-class tarotCard
-{
-public:
-  string name, time, desc;
-  int hp, attack;
-  tarotCard(string, string, string, int, int);
-  tarotCard();
-  //friend std::ostream& operator<< (std::ostream &out, const tarotCard &point);
-  string getDesc(void) { return desc; }
-  string getName(void) { return name; }
-  string getTime(void) { return time; }
-  int getHP(void) { return hp; }
-  int getAttack(void) { return attack; }
-  //bool get
-
-};
 
 class riddle
 {
@@ -68,20 +52,10 @@ public:
 /*
 std::ostream& operator<< (std::ostream &out, const tarotCard &point)
 {
-  out << "Point(" << point.m_x << ", " << point.m_y << ", " << point.m_z << ")";
-
-  return out;
+out << "Point(" << point.m_x << ", " << point.m_y << ", " << point.m_z << ")";
+return out;
 }
 */
-
-tarotCard::tarotCard()
-{
-  name = "name";
-  time = "time";
-  desc = "desc";
-  hp = 0;
-  attack = 0;
-}
 
 riddle::riddle(string q, string a)
 {
@@ -94,14 +68,6 @@ riddle::riddle()
 
 }
 
-tarotCard::tarotCard(string n, string t, string d, int h, int atck)
-{
-  name = n;
-  time = t;
-  desc = d;
-  hp = h;
-  attack = atck;
-}
 
 item::item(string n, string d, int h, int atck)
 {
@@ -140,7 +106,7 @@ void playAg(void);
 void basement(void);
 bool ridAnswer(riddle r);
 
-  vector<tarotCard> cards(3);
+vector<TarotCard> cards(3);
 char playA;
 char lean;
 bool playAgain = true;
@@ -157,24 +123,24 @@ riddle sphynx[4] = { turkey, deep, teethPuck, bury };
 int riddleNum = rand() % 4;
 string answer;
 
-  enemy toupee("Hideous, Sentient Toupee", "A wild mass of hair resembling a certain presidential candidate's hairpiece.", "YUUUGE", 24, 4, false);
-  enemy giraffe("Duck-Sized Giraffe", "A giraffe the size of a duck", "What sound do giraffes even make? Moo???", 32, 6, false);
-  enemy train("Scary Toy Train with a Laser Pointer", "The train waives its laser pointer around. It's strangely off-putting.", "\"I think I can, I think I can...DEFEAT YOU!", 32, 6, false);
-  enemy puck("Malicious hockey puck", "A hockey puck filled with all the agression and testosterone of hockey. Too bad it can't really move on its own.", "The hockey puck does not speak.", 32, 6, false);
-  enemy teeth("Teeth", "The tooth fairy is going to have a bad time with this one.", "*chatering*", 40, 8, false);
-  enemy cannibal("Acutal Cannibal Shia Le BUFF", "A buff cannibal repeatedly shouting \"DO IT\"", "JUST DO IT", 30, 5, false);
+enemy toupee("Hideous, Sentient Toupee", "A wild mass of hair resembling a certain presidential candidate's hairpiece.", "YUUUGE", 24, 4, false);
+enemy giraffe("Duck-Sized Giraffe", "A giraffe the size of a duck", "What sound do giraffes even make? Moo???", 32, 6, false);
+enemy train("Scary Toy Train with a Laser Pointer", "The train waives its laser pointer around. It's strangely off-putting.", "\"I think I can, I think I can...DEFEAT YOU!", 32, 6, false);
+enemy puck("Malicious hockey puck", "A hockey puck filled with all the agression and testosterone of hockey. Too bad it can't really move on its own.", "The hockey puck does not speak.", 32, 6, false);
+enemy teeth("Teeth", "The tooth fairy is going to have a bad time with this one.", "*chatering*", 40, 8, false);
+enemy cannibal("Acutal Cannibal Shia Le BUFF", "A buff cannibal repeatedly shouting \"DO IT\"", "JUST DO IT", 30, 5, false);
 
-  item mug("Co-Worker's coffee Mug", "I hate mondays is printed in a large black font. \nCome to think of it, your co-worker does hate mondays. \nWhat an honest mug. Otherwise unhelpful.", 0, 0);
-  item grenade("Holy Hand Grenade of Antioch", "Pull the pin and count to THREE. Not two, not four, three.", 0, 8);
-  item towel("A Towel", "The Ultimate Utility!", 12, 12);
-  item meme("Me_irl meme", "An image deserving a lighthearted chuckle. Good for the soul.", 8, 0);
+item mug("Co-Worker's coffee Mug", "I hate mondays is printed in a large black font. \nCome to think of it, your co-worker does hate mondays. \nWhat an honest mug. Otherwise unhelpful.", 0, 0);
+item grenade("Holy Hand Grenade of Antioch", "Pull the pin and count to THREE. Not two, not four, three.", 0, 8);
+item towel("A Towel", "The Ultimate Utility!", 12, 12);
+item meme("Me_irl meme", "An image deserving a lighthearted chuckle. Good for the soul.", 8, 0);
 
 int main(void)
 {
   char door;
   char trick;
   char trapStairs;
-  
+
   char pause = ' ';
   char spanishN = 164;
 
@@ -182,20 +148,20 @@ int main(void)
   string pr = "Present Influences";
   string fu = "Future Influences";
 
-  tarotCard harambe("Harambe", pa, "Our lord and saviour. He is a gentle, protecting, guiding force", 2, 0);
-  tarotCard sewer("Detroit Sewers", pa, "Gross, smelly, even worse than Detroit City. Unnavigable", -2, 0);
-  tarotCard dog("Neighbor's dog", pr, "Chases his tail and likes to bring you random left shoes", 0, 2);
-  tarotCard eyeball("Eyeball Salad", pr, "Creepy and squishy, eyeball salad stares judgingly into your soul", 0, -2);
-  tarotCard theVoid("The Void", fu, "Always there for you, practicing active listening when you scream into it. True friend.", 0, 0);
-  tarotCard candy("Melted Candy", fu, "A huge disappointment and a bigger mess. You have a swimming pool of it.", 0, 0);
+  TarotCard harambe("Harambe", pa, "Our lord and saviour. He is a gentle, protecting, guiding force", 2, 0);
+  TarotCard sewer("Detroit Sewers", pa, "Gross, smelly, even worse than Detroit City. Unnavigable", -2, 0);
+  TarotCard dog("Neighbor's dog", pr, "Chases his tail and likes to bring you random left shoes", 0, 2);
+  TarotCard eyeball("Eyeball Salad", pr, "Creepy and squishy, eyeball salad stares judgingly into your soul", 0, -2);
+  TarotCard theVoid("The Void", fu, "Always there for you, practicing active listening when you scream into it. True friend.", 0, 0);
+  TarotCard candy("Melted Candy", fu, "A huge disappointment and a bigger mess. You have a swimming pool of it.", 0, 0);
 
 
-  tarotCard past[2] = { harambe, sewer };
-  tarotCard present[2] = { dog, eyeball };
-  tarotCard future[2] = { theVoid, candy };
-  
+  TarotCard past[2] = { harambe, sewer };
+  TarotCard present[2] = { dog, eyeball };
+  TarotCard future[2] = { theVoid, candy };
 
-  
+
+
   srand(time(0));
 
   int pastCard = rand() % 2;
@@ -249,7 +215,7 @@ int main(void)
       "\nThe door on the right looks shy.";
     cout << "\nYou see someting lying on the ground between the two doors.";
     findItem(meme);
-    cout <<  "\n\nDo you want to go through the left[l] or right[r] door?\n\n(enter l or r. Or something else. I don't care)\n-- ";
+    cout << "\n\nDo you want to go through the left[l] or right[r] door?\n\n(enter l or r. Or something else. I don't care)\n-- ";
     cin >> door;
     while (door != 'r' && door != 'l')
     {
@@ -318,7 +284,7 @@ int main(void)
         "\n\nYou walk up to the statue and behind it you find a trap door and a spiral staircase that seems to head up endlessly."
         "\nThe trap door tastes of Marzipan and your mother's meatloaf. The spiral staircase tastes like dust and butterscotch.";
       findItem(meme);
-      cout <<  "\n\nDo you want to go up [u] or down[d]?\n\n-- ";
+      cout << "\n\nDo you want to go up [u] or down[d]?\n\n-- ";
       cin >> trapStairs;
       while (trapStairs != 'u' && trapStairs != 'd')
       {
@@ -329,7 +295,7 @@ int main(void)
       {
         cout << "\nYou decide to go up the stairs.";
         fightEnemy(giraffe);
-          "\nYou walk up..."
+        "\nYou walk up..."
           "\n\t...and up..."
           "\n\t\t...and up..."
           "\n\t\t\t...and up..."
@@ -528,7 +494,7 @@ void basement(void)
     "\n\nNope, you're on your own here buddy, you have to sift through all this junk on your own. ";
   cout << "\n\nWhile sifting through some of this junk you stumble upon something useful.";
   findItem(meme);
-   cout << "\n\nFinally under a dozen boxes of  bell bottoms, some broken lava lamps, mood rings that predict danger,"
+  cout << "\n\nFinally under a dozen boxes of  bell bottoms, some broken lava lamps, mood rings that predict danger,"
     "\nand other stuff that should never see the light of the future ever again,"
     "\nYou find what you're looking for.  A waterslide out of here!"
     "\nIt has a fork though. do you lean to the [l]eft or to the [r]ight?";
@@ -575,7 +541,7 @@ void basement(void)
     cout << "Tarot Cards:";
     for (int i = 0; i < 3; i++)
     {
-      cout << cards[i].getName()<< endl;
+      cout << cards[i].getName() << endl;
     }
 
     cout << "[Press enter to continue]\n-- ";
@@ -605,44 +571,43 @@ void basement(void)
       playAg();
     }
 
-      /*
+    /*
     cout << "\n\nHow do you respond? :";
     getline(cin, answer);
     string answerLower;
     for (int i = 0; i < answer.length(); ++i)
     {
-      answerLower += answer[i];
+    answerLower += answer[i];
     }
     bool rightAns = false;
     cout << "\nYou have answered ";
     for (int i = 0; i < answerLower.length() - sphynx[riddleNum].getAnswer().length(); ++i)
     {
-      if (sphynx[riddleNum].getAnswer() == answerLower.substr(i, sphynx[riddleNum].getAnswer().length()))
-      {
-        cout << "CORRECTLY." << endl;
-        rightAns = true;
-        break;
-      }
+    if (sphynx[riddleNum].getAnswer() == answerLower.substr(i, sphynx[riddleNum].getAnswer().length()))
+    {
+    cout << "CORRECTLY." << endl;
+    rightAns = true;
+    break;
+    }
     }
     if (!rightAns)
     {
-      cout << "INCORRECTLY." << endl;
+    cout << "INCORRECTLY." << endl;
     }
     if (sphynx[riddleNum].getAnswer() == "death")
     {
-      playerDeath();
-      playAg();
+    playerDeath();
+    playAg();
     }
     else if (sphynx[riddleNum].getAnswer() == "puck")
-      fightEnemy(puck);
+    fightEnemy(puck);
     else
-      cout << "\nYou are permitted to continue on your way.";
+    cout << "\nYou are permitted to continue on your way.";
     }
-
     //playAg();
     */
   }
-  
+
   else if (lean == 'r')
   {
     cout << "\nThe right path slows down a bit."
@@ -661,25 +626,25 @@ void basement(void)
 /*
 bool ridAnswer(riddle r, string a)
 {
-  if (r.getAnswer() == "death")
-  {
-    return false;
-  }
-  string s;
-  for (int i = 0; i < r.getAnswer().length; ++i)
-  {
-    s+=tolower(r.getAnswer()[i]);
-  }
-  string t;
-  for (int i = 0; i < a.length; ++i)
-  {
-    t += tolower(a[i]);
-  }
-  for (int i = 0; i < a.length(); ++i)
-  {
-    if (r.getAnswer() == a.substr(i, r.getAnswer().length()))
-      return true;
-  }
-  return false;
+if (r.getAnswer() == "death")
+{
+return false;
+}
+string s;
+for (int i = 0; i < r.getAnswer().length; ++i)
+{
+s+=tolower(r.getAnswer()[i]);
+}
+string t;
+for (int i = 0; i < a.length; ++i)
+{
+t += tolower(a[i]);
+}
+for (int i = 0; i < a.length(); ++i)
+{
+if (r.getAnswer() == a.substr(i, r.getAnswer().length()))
+return true;
+}
+return false;
 }
 */
