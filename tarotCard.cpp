@@ -40,6 +40,5 @@ string TarotCard::getDesc()
 string TarotCard::getTime() { return time; }
 
 int TarotCard::getAttack(void) { return attack; }
+
 int TarotCard::getHP(void) { return hp; }
-
-

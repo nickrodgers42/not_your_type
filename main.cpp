@@ -7,6 +7,7 @@
 #include <vector> 
 #include <stdio.h>
 #include "tarotCard.h"
+#include "item.h"
 
 using namespace std;
 
@@ -18,19 +19,6 @@ public:
   riddle();
   string getQuestion(void) { return question; }
   string getAnswer(void) { return answer; }
-};
-
-class item
-{
-public:
-  string name, desc;
-  int hp, attack;
-  item(string, string, int, int);
-  item();
-  string getName(void) { return name; }
-  string getDesc(void) { return desc; }
-  int getHP(void) { return hp; }
-  int getAttack(void) { return attack; }
 };
 
 class enemy
@@ -69,19 +57,6 @@ riddle::riddle()
 }
 
 
-item::item(string n, string d, int h, int atck)
-{
-  name = n;
-  desc = d;
-  hp = h;
-  attack = atck;
-}
-
-item::item()
-{
-
-}
-
 enemy::enemy(string n, string d, string t, int h, int atck, bool r)
 {
   name = n;
@@ -97,8 +72,8 @@ enemy::enemy()
 
 }
 
-void findItem(item i);
-void equipItem(item i);
+void findItem(Item i);
+void equipItem(Item i);
 void fightEnemy(enemy e);
 void printTitleScreen(void);
 void playerDeath(void);
@@ -130,10 +105,10 @@ enemy puck("Malicious hockey puck", "A hockey puck filled with all the agression
 enemy teeth("Teeth", "The tooth fairy is going to have a bad time with this one.", "*chatering*", 40, 8, false);
 enemy cannibal("Acutal Cannibal Shia Le BUFF", "A buff cannibal repeatedly shouting \"DO IT\"", "JUST DO IT", 30, 5, false);
 
-item mug("Co-Worker's coffee Mug", "I hate mondays is printed in a large black font. \nCome to think of it, your co-worker does hate mondays. \nWhat an honest mug. Otherwise unhelpful.", 0, 0);
-item grenade("Holy Hand Grenade of Antioch", "Pull the pin and count to THREE. Not two, not four, three.", 0, 8);
-item towel("A Towel", "The Ultimate Utility!", 12, 12);
-item meme("Me_irl meme", "An image deserving a lighthearted chuckle. Good for the soul.", 8, 0);
+Item mug("Co-Worker's coffee Mug", "I hate mondays is printed in a large black font. \nCome to think of it, your co-worker does hate mondays. \nWhat an honest mug. Otherwise unhelpful.", 0, 0);
+Item grenade("Holy Hand Grenade of Antioch", "Pull the pin and count to THREE. Not two, not four, three.", 0, 8);
+Item towel("A Towel", "The Ultimate Utility!", 12, 12);
+Item meme("Me_irl meme", "An image deserving a lighthearted chuckle. Good for the soul.", 8, 0);
 
 int main(void)
 {
@@ -334,7 +309,7 @@ int main(void)
   return 0;
 }
 
-void findItem(item it)
+void findItem(Item it)
 {
   bool cont = true;
 
@@ -373,7 +348,7 @@ void findItem(item it)
   }
 }
 
-void equipItem(item i)
+void equipItem(Item i)
 {
   cout << "\n" << i.getName() << " equipped";
   userHP += i.getHP();
