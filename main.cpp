@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include "tarotCard.h"
 #include "item.h"
+#include "enemy.h"
 
 using namespace std;
 
@@ -21,22 +22,6 @@ public:
   string getAnswer(void) { return answer; }
 };
 
-class enemy
-{
-public:
-  string name, desc, talk;
-  int hp, attack;
-  bool run;
-  enemy(string, string, string, int, int, bool);
-  enemy();
-  string getName(void) { return name; }
-  string getDesc(void) { return desc; }
-  string getTalk(void) { return talk; }
-  int getHP(void) { return hp; }
-  int getAttack(void) { return attack; }
-  void setHP(int i) { hp = i; }
-  bool getRun(void) { return run; }
-};
 /*
 std::ostream& operator<< (std::ostream &out, const tarotCard &point)
 {
@@ -56,25 +41,9 @@ riddle::riddle()
 
 }
 
-
-enemy::enemy(string n, string d, string t, int h, int atck, bool r)
-{
-  name = n;
-  desc = d;
-  talk = t;
-  hp = h;
-  attack = atck;
-  run = r;
-}
-
-enemy::enemy()
-{
-
-}
-
 void findItem(Item i);
 void equipItem(Item i);
-void fightEnemy(enemy e);
+void fightEnemy(Enemy e);
 void printTitleScreen(void);
 void playerDeath(void);
 void playAg(void);
@@ -98,12 +67,12 @@ riddle sphynx[4] = { turkey, deep, teethPuck, bury };
 int riddleNum = rand() % 4;
 string answer;
 
-enemy toupee("Hideous, Sentient Toupee", "A wild mass of hair resembling a certain presidential candidate's hairpiece.", "YUUUGE", 24, 4, false);
-enemy giraffe("Duck-Sized Giraffe", "A giraffe the size of a duck", "What sound do giraffes even make? Moo???", 32, 6, false);
-enemy train("Scary Toy Train with a Laser Pointer", "The train waives its laser pointer around. It's strangely off-putting.", "\"I think I can, I think I can...DEFEAT YOU!", 32, 6, false);
-enemy puck("Malicious hockey puck", "A hockey puck filled with all the agression and testosterone of hockey. Too bad it can't really move on its own.", "The hockey puck does not speak.", 32, 6, false);
-enemy teeth("Teeth", "The tooth fairy is going to have a bad time with this one.", "*chatering*", 40, 8, false);
-enemy cannibal("Acutal Cannibal Shia Le BUFF", "A buff cannibal repeatedly shouting \"DO IT\"", "JUST DO IT", 30, 5, false);
+Enemy toupee("Hideous, Sentient Toupee", "A wild mass of hair resembling a certain presidential candidate's hairpiece.", "YUUUGE", 24, 4, false);
+Enemy giraffe("Duck-Sized Giraffe", "A giraffe the size of a duck", "What sound do giraffes even make? Moo???", 32, 6, false);
+Enemy train("Scary Toy Train with a Laser Pointer", "The train waives its laser pointer around. It's strangely off-putting.", "\"I think I can, I think I can...DEFEAT YOU!", 32, 6, false);
+Enemy puck("Malicious hockey puck", "A hockey puck filled with all the agression and testosterone of hockey. Too bad it can't really move on its own.", "The hockey puck does not speak.", 32, 6, false);
+Enemy teeth("Teeth", "The tooth fairy is going to have a bad time with this one.", "*chatering*", 40, 8, false);
+Enemy cannibal("Acutal Cannibal Shia Le BUFF", "A buff cannibal repeatedly shouting \"DO IT\"", "JUST DO IT", 30, 5, false);
 
 Item mug("Co-Worker's coffee Mug", "I hate mondays is printed in a large black font. \nCome to think of it, your co-worker does hate mondays. \nWhat an honest mug. Otherwise unhelpful.", 0, 0);
 Item grenade("Holy Hand Grenade of Antioch", "Pull the pin and count to THREE. Not two, not four, three.", 0, 8);
@@ -358,7 +327,7 @@ void equipItem(Item i)
   cout << "User Attack: " << userAttack << endl;
 }
 
-void fightEnemy(enemy e)
+void fightEnemy(Enemy e)
 {
   char actionChoice;
   int damage;

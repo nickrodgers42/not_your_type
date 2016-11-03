@@ -9,10 +9,9 @@ class TarotCard
 private:
   string name, time, desc;
   int hp, attack;
-
 public:
   TarotCard();
-  TarotCard(string, string, string, int, int);
+  TarotCard(string n, string d, string t, int hp, int atck);
 
   string getDesc();
   string getName();
