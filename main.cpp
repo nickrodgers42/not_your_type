@@ -9,37 +9,9 @@
 #include "tarotCard.h"
 #include "item.h"
 #include "enemy.h"
+#include "riddle.h"
 
 using namespace std;
-
-class riddle
-{
-public:
-  string question, answer;
-  riddle(string, string);
-  riddle();
-  string getQuestion(void) { return question; }
-  string getAnswer(void) { return answer; }
-};
-
-/*
-std::ostream& operator<< (std::ostream &out, const tarotCard &point)
-{
-out << "Point(" << point.m_x << ", " << point.m_y << ", " << point.m_z << ")";
-return out;
-}
-*/
-
-riddle::riddle(string q, string a)
-{
-  question = q;
-  answer = a;
-}
-
-riddle::riddle()
-{
-
-}
 
 void findItem(Item i);
 void equipItem(Item i);
@@ -48,7 +20,7 @@ void printTitleScreen(void);
 void playerDeath(void);
 void playAg(void);
 void basement(void);
-bool ridAnswer(riddle r);
+bool ridAnswer(Riddle r);
 
 vector<TarotCard> cards(3);
 char playA;
@@ -59,11 +31,11 @@ string beast = "THE BEWILDERBEAST: AN AIRPLANE WITH 7 FISH HEADS";
 int userAttack = 8;
 int userHP = 50;
 
-riddle turkey("Why is a sea anemone like a turkey", "death");
-riddle deep("Before the Marianas Trench was discovered in 1875, what was the deepest place on Earth?", "marianas");
-riddle bury("Why is it illegal to bury someone living in one state in a different state", "alive");
-riddle teethPuck("What's round, black, and bad for your teeth?", "puck");
-riddle sphynx[4] = { turkey, deep, teethPuck, bury };
+Riddle turkey("Why is a sea anemone like a turkey", "death");
+Riddle deep("Before the Marianas Trench was discovered in 1875, what was the deepest place on Earth?", "marianas");
+Riddle bury("Why is it illegal to bury someone living in one state in a different state", "alive");
+Riddle teethPuck("What's round, black, and bad for your teeth?", "puck");
+Riddle sphynx[4] = { turkey, deep, teethPuck, bury };
 int riddleNum = rand() % 4;
 string answer;
 
