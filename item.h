@@ -1,6 +1,9 @@
+#ifndef ITEM
+#define ITEM
+
 #include <string>
 #include <iostream>
-#pragma once
+// #pragma once
 
 using namespace std;
 
@@ -18,3 +21,5 @@ public:
   int getHP(void);
   int getAttack(void);
 };
+
+#endif

@@ -1,6 +1,9 @@
+#ifndef ENEMY
+#define ENEMY
+
 #include <iostream>
 #include <string>
-#pragma once
+// #pragma once
 
 using namespace std;
 
@@ -22,3 +25,5 @@ public:
   void setHP(int i);
   bool getRun(void);
 };
+
+#endif

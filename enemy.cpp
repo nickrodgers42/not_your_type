@@ -30,6 +30,8 @@ string Enemy::getTalk(void) { return talk; }
 
 int Enemy::getHP(void) { return hp; }
 
+void Enemy::setHP(int i) { hp = i; }
+
 int Enemy::getAttack(void) { return attack; }
 
 bool Enemy::getRun(void) { return run; }
