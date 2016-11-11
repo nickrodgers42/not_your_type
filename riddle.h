@@ -20,5 +20,4 @@ public:
   bool giveAnswer(string a);
 };
 
-
 #endif

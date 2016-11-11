@@ -10,6 +10,7 @@
 #include "item.h"
 #include "enemy.h"
 #include "riddle.h"
+#include "player.h"
 
 using namespace std;
 
