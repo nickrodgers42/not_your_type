@@ -4,6 +4,7 @@
 
 #include<iostream>
 #include<string>
+#include"item.h"
 
 using namespace std;
 
@@ -14,6 +15,7 @@ private:
   int hp;
   int attack;
   int lives;
+  Item inventory[5];
 
 public:
   Player();
@@ -23,5 +25,7 @@ public:
   int getAttack(void);
   void setAttack(int a);
   void getStats(void);
+  void equipItem(Item i);
+
 };
 #endif

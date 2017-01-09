@@ -20,6 +20,11 @@ Item::Item(string n, string d, int health, int atck)
   attack = atck;
 }
 
+Item::~Item()
+{
+
+}
+
 string Item::getName(void)
 {
   return name;

@@ -16,6 +16,7 @@ private:
 public:
   Item();
   Item(string, string, int, int);
+  ~Item();
   string getName(void);
   string getDesc(void);
   int getHP(void);
